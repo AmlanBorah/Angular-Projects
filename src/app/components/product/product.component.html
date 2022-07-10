@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="product-view">
+        <img class="product-image" src="{{product.image}}" alt="">
+        <div class="product-buttons">
+            <button class="add-to-cart" (click)="addProduct(product)" routerLink="/cart">Add to Cart</button>
+            <button class="buy-now" routerLink="/">Explore</button>
+        </div>
+    </div>
+    <div class="product-details">
+        <div class="product-title">
+            <h2>{{product.title}}</h2>
+        </div>
+        <div class="product-rating">
+            <span class="star-value">{{product.rating.rate}}</span>
+            <fa-icon class="star-icon" [icon]="star"></fa-icon>
+        </div>
+        <div class="product-price">
+            {{product.price | currency:'INR':true}}
+        </div>
+        <div class="product-description">
+            <p>{{product.description}}</p>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+<div class="product-container">
+    <div class="product" *ngFor="let p of productList">
+        <img class="product-image" [routerLink]="['/product', p.id]" src="{{p.image}}" alt="Image of {{p.title}}">
+        <div *ngIf="p.title.length<25; then lessBlock; else moreBlock"></div>
+        <ng-template #lessBlock>
+            <div class="product-name" [routerLink]="['/product', p.id]">{{p.title}}</div>
+        </ng-template>
+        <ng-template #moreBlock>
+            <div class="product-name" [routerLink]="['/product', p.id]">{{p.title.substr(0,25)}}...</div>
+        </ng-template>
+        <div class="product-details">
+            <div class="product-rating-and-count">
+                <div class="product-rating">
+                    <span class="star-value">{{p.rating.rate}}</span>
+                    <fa-icon class="star-icon" [icon]="star"></fa-icon>
+                </div>
+                <div class="product-count">({{p.rating.count}})</div>
+            </div>
+            <div class="product-price">{{p.price |currency:'INR':'symbol'}}</div>
+        </div>
+    </div>
+</div>
+

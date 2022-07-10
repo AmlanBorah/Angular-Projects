@@ -1,0 +1,17 @@
+<div class="navbar">
+    <div class="navbar-left">
+        <span class="logo" routerLink="/">E-Commerce</span>
+    </div>
+    <div class="navbar-center">
+        <div class="searchbar">
+            <fa-icon class="searchbar-icon" [icon]="searchIcon"></fa-icon>
+            <input class="searchbar-input" placeholder="Search for electronics, clothes, shoes and more" />
+        </div>
+    </div>
+    <div class="navbar-right">
+        <div class="cart">
+            <fa-icon class="shopping-cart" [icon]="shoppingCart" routerLink="/cart"></fa-icon>
+            <span class="badge-icon" *ngIf="totalItems != 0" routerLink="/cart">{{totalItems}}</span>
+        </div>
+    </div>
+</div>

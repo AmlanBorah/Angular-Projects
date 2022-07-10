@@ -1,0 +1,67 @@
+<div *ngIf="cartData.length != 0; then cart; else empty">
+
+</div>
+
+<ng-template #cart>
+    <div class="cart-container">
+        <div class="cart">
+            <div class="cart-title">
+                <h1>Welcome to your cart!</h1>
+            </div>
+            <div class="cart-contents">
+                <div class="cart-heading">
+                    <div class="cart-item-sl-no">Sl No</div>
+                    <div class="cart-item-title">Title</div>
+                    <div class="cart-item-image">Image</div>
+                    <div class="cart-item-description">Description</div>
+                    <div class="cart-item-quantity">Quantity</div>
+                    <div class="cart-item-price">Price</div>
+                    <div class="cart-item-amount">Amount</div>
+                    <div class="cart-item-action" id="cart-item-heading-action">Action</div>
+                </div>
+                <div class="cart-items">
+                    <div class="cart-item" *ngFor="let c of cartData, let i=index">
+                        <div class="cart-item-sl-no">{{i+1}}</div>
+                        <div class="cart-item-title">{{c.title}}</div>
+                        <div class="cart-item-image"><img src="{{c.image}}" alt=""></div>
+                        <div class="cart-item-description">{{c.description}}</div>
+                        <div class="cart-item-quantity">
+                            <span><fa-icon class="minus" [icon]="minus" (click)="changeQuantity(c.id, 'decrease')"></fa-icon></span>
+                            <span>{{c.quantity}}</span>
+                            <span><fa-icon class="plus" [icon]="plus" (click)="changeQuantity(c.id, 'increase')"></fa-icon></span>
+                        </div>
+                        <div class="cart-item-price">{{c.price |currency:'INR':'symbol'}}</div>
+                        <div class="cart-item-amount">{{(c.price * c.quantity) |currency:'INR':'symbol'}}</div>
+                        <div class="cart-item-action"><fa-icon class="delete" [icon]="delete" (click)="removeItem(c.id)"></fa-icon></div>
+                    </div>
+                </div>
+                <div class="cart-items-total-amount">
+                    <h3>Total Amount: {{totalAmount |currency:'INR':'symbol'}}</h3>
+                </div>
+                <div class="cart-buttons">
+                    <button class="cart-button" id="explore-btn" routerLink="/home">Add More</button>
+                    <button class="cart-button" id="empty-cart-btn" routerLink="/home" (click)="emptyCart()">Empty Cart</button>
+                    <button class="cart-button" id="check-out-btn" routerLink="/paymentgateway">Check Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #empty>
+    <div class="cart-container">
+        <div class="empty-cart">
+            <div class="cart-title">
+                <h1>Welcome to your cart!</h1>
+            </div>
+            <div class="empty-cart-contents">
+                <img class="empty-cart-image"
+                    src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                    alt="">
+                <h2 class="empty-cart-description">Your cart is empty!</h2>
+                <button class="empty-cart-button" routerLink="/">Add Items</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
