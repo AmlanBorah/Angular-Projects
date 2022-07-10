@@ -28,4 +28,6 @@ export class CartComponent implements OnInit {
 
   removeItem = (id:number) => this.componentApi.removeCartData(id) 
 
+  checkQuantity = (q:number) => q<2
+
 }

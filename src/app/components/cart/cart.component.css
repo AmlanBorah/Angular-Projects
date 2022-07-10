@@ -149,6 +149,11 @@
     cursor: pointer;
 }
 
+.minus-disabled{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .plus{
     margin-left: 10px;
 }
